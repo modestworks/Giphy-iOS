@@ -14,6 +14,7 @@
 #import "AXCGiphyImageOriginal.h"
 
 NSString * const kGiphyPublicAPIKey = @"dc6zaTOxFJmzC";
+NSString * const kAPIURL = @"https://api.giphy.com/v1/gifs";
 
 @interface AXCGiphy ()
 @property (readwrite, strong, nonatomic) NSString * gifID;
@@ -122,8 +123,7 @@ static NSString * kGiphyAPIKey;
 
 + (NSURLRequest *) requestForEndPoint:(NSString *) endpoint params:(NSDictionary *) params
 {
-    NSString * base = @"http://api.giphy.com/v1/gifs";
-    NSString * withEndPoint = [NSString stringWithFormat:@"%@%@", base, endpoint];
+    NSString * withEndPoint = [NSString stringWithFormat:@"%@%@", kAPIURL, endpoint];
     NSError * error;
     
     NSMutableDictionary * paramsWithAPIKey = [NSMutableDictionary dictionaryWithDictionary:params];
